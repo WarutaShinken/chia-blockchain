@@ -93,6 +93,7 @@ def main(file: Path, mempool_mode: bool, start: int, end: Optional[int], call: O
         for h in block.transactions_generator_ref_list:
             ref = c.execute("SELECT block FROM full_blocks WHERE height=? and in_main_chain=1", (h,))
             generator = generator_from_block(zstd.decompress(ref.fetchone()[0]))
+            assert generator is not None
             generator_blobs.append(bytes(generator))
             ref.close()
 
