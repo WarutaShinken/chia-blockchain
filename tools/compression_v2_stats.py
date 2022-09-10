@@ -5,7 +5,7 @@ To use, run with a command-line like:
 
 ```
 DB=~/.chia/mainnet/db/blockchain_v2_mainnet.sqlite
-python -m tools.analyze-chain $DB --start 300000 --end 300100  --call tools.recompress:recompress_block
+python -m tools.analyze-chain $DB --start 300000 --end 300100  --call tools.compression_v2_stats:stats
 ```
 
 while the current directory is the root `chia-blockchain` folder.
@@ -42,7 +42,7 @@ DECOMP_MOD = SerializedProgram.fromhex(
 COST_PER_BYTE = 12000
 
 
-def recompress_block(
+def stats(
     block: GeneratorBlockInfo, hh: bytes, height: int, generator_blobs: List[bytes], ref_lookup_time: float, flags: int
 ) -> None:
     MAX_COST = int(1e18)
