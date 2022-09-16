@@ -19,6 +19,6 @@ jobs:
           secretToken: "${{ secrets.GITHUB_TOKEN }}"
           # targeting 2 minutes of retry, longest observed window thus far is ~30 seconds
           retryIntervalSec: 5
-          retryMax: 24
+          retryMax: 20
           commentToAddOnConflict: "This pull request has conflicts, please resolve those before we can evaluate the pull request."
           commentToAddOnClean: "Conflicts have been resolved. A maintainer will review the pull request shortly."
