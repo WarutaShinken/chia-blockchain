@@ -163,7 +163,7 @@ async def async_combine(args: Dict[str, Any], wallet_client: WalletRpcClient, fi
     if input("Would you like to Continue? (y/n): ") != "y":
         return
     total_amount: uint128 = uint128(sum(coin.amount for coin in removals))
-    if total_amount - final_fee <= 0:
+    if total_amount - final_fee < 0:
         print("Total amount is less than 0 after fee, exiting.")
         return
     target_ph: bytes32 = decode_puzzle_hash(await wallet_client.get_next_address(wallet_id, False))
